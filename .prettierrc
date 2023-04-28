@@ -1,0 +1,11 @@
+{
+  "printWidth": 140,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "bracketSameLine": false,
+  "arrowParens": "avoid",
+  "attributeGroups": ["^#", "$ANGULAR_STRUCTURAL_DIRECTIVE", "$DEFAULT", "$ANGULAR_INPUT", "$ANGULAR_TWO_WAY_BINDING", "$ANGULAR_OUTPUT"],
+  "attributeSort": "ASC",
+  "order": "smacss",
+  "keepOverrides": false
+}
