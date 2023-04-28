@@ -1,0 +1,30 @@
+<ng-container *ngrxLet="activeCurrency$; let activeCurrency">
+  <div class="languages">
+    <h2 class="languages__title">Choose currency:</h2>
+    <ul class="languages__list">
+      <li *ngFor="let item of currencies | keyvalue" class="languages__list-item">
+        <cc-currency-button
+          [currency]="item.value"
+          [isActive]="item.value === activeCurrency"
+          (setActiveCurrency)="setActiveCurrency($event)"
+        ></cc-currency-button>
+      </li>
+    </ul>
+  </div>
+  <ng-container *ngrxLet="currencyPairsRates$; let currencyPairsRates">
+    <div class="product-list">
+      <ng-container *ngFor="let product of products$ | async; trackByKey: 'uuid'; let i = index">
+        <cc-product
+          [product]="product"
+          [currencyPairsRates]="currencyPairsRates"
+          [activeCurrency]="activeCurrency"
+        ></cc-product>
+      </ng-container>
+    </div>
+    <cc-total-price
+      [totalProductsPrice]="totalProductsPrice$ | ngrxPush"
+      [currencyPairsRates]="currencyPairsRates"
+      [activeCurrency]="activeCurrency"
+    ></cc-total-price>
+  </ng-container>
+</ng-container>
