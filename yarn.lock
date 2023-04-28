@@ -1680,6 +1680,55 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@datorama/akita-ng-entity-service@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "@datorama/akita-ng-entity-service@npm:8.0.0"
+  dependencies:
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/core": ">= 15.0.0"
+    "@datorama/akita": ">= 8.0.0"
+    rxjs: "*"
+  checksum: 3a13c84ebf03369b79139f68305929349977f6366be4510ca12356c6d7316fb1f7bea349ac7a333e556f51e3a99aa2c1560eabd3d9b502d1a63f63572c6002be
+  languageName: node
+  linkType: hard
+
+"@datorama/akita-ng-router-store@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "@datorama/akita-ng-router-store@npm:8.0.0"
+  dependencies:
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/core": ">= 15.0.0"
+    "@datorama/akita": ">= 8.0.0"
+    rxjs: "*"
+  checksum: 5fa02b50eca62fa8fb50d879b7861005bc4ff5a678986ea2bad81723268bca6d5330944165e674241ceb94000543ded3a2179ae2fc5e68ebaac31f7d2d28da13
+  languageName: node
+  linkType: hard
+
+"@datorama/akita-ngdevtools@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "@datorama/akita-ngdevtools@npm:7.0.0"
+  dependencies:
+    tslib: ^2.3.0
+  peerDependencies:
+    "@angular/core": ">= 13.0.0"
+    "@datorama/akita": ">= 7.0.0"
+    rxjs: "*"
+  checksum: 232ebf0c9fe33e68dfacb1986859857609a325c0c3f6d3429c8a3283b93532d4ba396298977ab8542d799b0c537f3791ffcb80d3c73f9709833eade7f03a350a
+  languageName: node
+  linkType: hard
+
+"@datorama/akita@npm:8.0.1":
+  version: 8.0.1
+  resolution: "@datorama/akita@npm:8.0.1"
+  peerDependencies:
+    rxjs: "*"
+    tslib: 2.4.1
+  checksum: 67cd077d83d25633b0680f80660f569f5993cdfc7c531eff1d2707c6a273697917803ea230832247270ef47e96c5d3a21643f24cf4e5a7f0e1afb760010fdd0a
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:0.5.7":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -2873,7 +2922,12 @@ __metadata:
     "@angular/platform-browser": ^15.2.8
     "@angular/platform-browser-dynamic": ^15.2.8
     "@angular/router": ^15.2.8
+    "@datorama/akita": 8.0.1
+    "@datorama/akita-ng-entity-service": ^8.0.0
+    "@datorama/akita-ng-router-store": ^8.0.0
+    "@datorama/akita-ngdevtools": ^7.0.0
     "@types/jasmine": ~4.3.1
+    bluebird: ^3.7.2
     eslint: ^8.39.0
     eslint-config-prettier: ^8.8.0
     eslint-plugin-import: ^2.27.5
@@ -3216,6 +3270,13 @@ __metadata:
     inherits: ^2.0.4
     readable-stream: ^3.4.0
   checksum: 9e8521fa7e83aa9427c6f8ccdcba6e8167ef30cc9a22df26effcc5ab682ef91d2cbc23a239f945d099289e4bbcfae7a192e9c28c84c6202e710a0dfec3722662
+  languageName: node
+  linkType: hard
+
+"bluebird@npm:^3.7.2":
+  version: 3.7.2
+  resolution: "bluebird@npm:3.7.2"
+  checksum: 869417503c722e7dc54ca46715f70e15f4d9c602a423a02c825570862d12935be59ed9c7ba34a9b31f186c017c23cac6b54e35446f8353059c101da73eac22ef
   languageName: node
   linkType: hard
 
