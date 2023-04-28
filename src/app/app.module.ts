@@ -8,15 +8,9 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    environment.production ? [] : AkitaNgDevtools.forRoot(),
-    AkitaNgRouterStoreModule
-  ],
-  providers: [{ provide: NG_ENTITY_SERVICE_CONFIG, useValue: { baseUrl: 'https://jsonplaceholder.typicode.com' }}],
+  declarations: [AppComponent],
+  imports: [BrowserModule, environment.production ? [] : AkitaNgDevtools.forRoot({ maxAge: 25 }), AkitaNgRouterStoreModule],
+  providers: [{ provide: NG_ENTITY_SERVICE_CONFIG, useValue: { baseUrl: 'https://jsonplaceholder.typicode.com' } }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
