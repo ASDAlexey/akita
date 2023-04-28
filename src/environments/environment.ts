@@ -4,8 +4,11 @@
  The list of file replacements can be found in `angular.json`.
 */
 
+import { defaultData } from './default';
+
 export const environment = {
-  production: false,
+  ...defaultData,
+  production: false
 };
 
 /*
