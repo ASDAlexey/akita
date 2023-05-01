@@ -10,10 +10,10 @@ export class CartFacadeService {
   activeCurrency$ = of(Currencies.USD);
   currencyPairsRates$ = of({} as Record<CurrencyPairsRates, number>);
 
-  // constructor(private store$: Store<CartState>) {
-  //   this.store$.dispatch(loadSelectedCart({ data: [{ price: 20 }, { price: 45 }, { price: 67 }, { price: 1035 }] }));
-  //   this.store$.dispatch(loadCurrencyPairsRates({ pairs: ['RUB', 'EUR', 'GBP', 'JPY'] }));
-  // }
+  constructor() {
+    // this.store$.dispatch(loadSelectedCart({ data: [{ price: 20 }, { price: 45 }, { price: 67 }, { price: 1035 }] }));
+    // this.store$.dispatch(loadCurrencyPairsRates({ pairs: ['RUB', 'EUR', 'GBP', 'JPY'] }));
+  }
 
   setActiveCurrency(activeCurrency: Currencies): void {
     // this.store$.dispatch(setActiveCurrency({ activeCurrency }));

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import { Observable, of } from 'rxjs';
-import { map, pluck, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 export interface Product {
   uuid: string;
@@ -16,7 +16,7 @@ export enum CurrencyPairsRates {
   USDRUB = 'USDRUB',
   USDEUR = 'USDEUR',
   USDGBP = 'USDGBP',
-  USDJPY = 'USDJPY',
+  USDJPY = 'USDJPY'
 }
 
 export const CurrencyPairsNames = {
@@ -24,7 +24,7 @@ export const CurrencyPairsNames = {
   EUR: 'euros',
   GBP: 'pounds',
   JPY: 'yens',
-  USD: 'US dollars',
+  USD: 'US dollars'
 };
 
 @Injectable({ providedIn: 'root' })
@@ -43,19 +43,19 @@ export class CartService {
     }
   }
 
-  private loadCurrencyPairsRatesFromAPI(pairs: string[]): Observable<Record<CurrencyPairsRates, number>> {
+  loadCurrencyPairsRatesFromAPI(pairs: string[]): Observable<Record<CurrencyPairsRates, number>> {
     return this.http
       .get<{ rates: Record<keyof CurrencyPairsRates, string>; date: string; base: 'USD' }>(`/latest`, {
-        params: { apikey: environment.CURRENCY_FREAKS_API_KEY },
+        params: { apikey: environment.CURRENCY_FREAKS_API_KEY }
       })
       .pipe(
-        pluck('rates'),
+        map(data => data.rates),
         map((rates: Record<string, string>) => {
           return pairs.reduce((acc, currency) => {
             return { ...acc, [`USD${currency}`]: +rates[currency] };
           }, {} as Record<CurrencyPairsRates, number>);
         }),
-        tap(currencyPairsRates => this.saveCurrencyPairsRatesToStorage(currencyPairsRates)),
+        tap(currencyPairsRates => this.saveCurrencyPairsRatesToStorage(currencyPairsRates))
       );
   }
 

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CurrencyPairsNames } from '@app/modules/cart/services/cart.service';
+import { CartService, CurrencyPairsNames } from '@app/modules/cart/services/cart.service';
 import { CartFacadeService } from '@cart/store/cart-facade.service';
 import { Currencies } from '@shared/helpers/app.constants';
 
@@ -18,7 +18,9 @@ export class CartComponent {
   activeCurrency$ = this.cartFacade.activeCurrency$;
   currencyPairsRates$ = this.cartFacade.currencyPairsRates$;
 
-  constructor(private cartFacade: CartFacadeService) {}
+  constructor(private cartFacade: CartFacadeService, private cartService: CartService) {
+    this.cartService.loadCurrencyPairsRatesFromAPI(['RUB', 'EUR', 'GBP', 'JPY']).subscribe();
+  }
 
   setActiveCurrency(activeCurrency: Currencies): void {
     this.cartFacade.setActiveCurrency(activeCurrency);
