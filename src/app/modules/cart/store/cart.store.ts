@@ -5,22 +5,22 @@ import { Status } from '@shared/constants/app.constants';
 import { Currencies } from '@shared/helpers/app.constants';
 
 export interface CartState {
-  activeCurrency: Currencies;
   currencyPairsRates: Record<CurrencyPairsRates, number>;
+  activeCurrency: Currencies;
   statusCurrencyPairsRate: Status;
-  ids: number[];
-  entities: Record<number, Product>;
+  ids: string[];
+  entities: Record<string, Product>;
   error: string | null;
 }
 
 export function createInitialState(): CartState {
   return {
-    activeCurrency: Currencies.USD,
     currencyPairsRates: {} as Record<CurrencyPairsRates, number>,
+    activeCurrency: Currencies.USD,
     statusCurrencyPairsRate: Status.UNINITIALIZED,
-    error: null,
     ids: [],
-    entities: {}
+    entities: {},
+    error: null
   };
 }
 

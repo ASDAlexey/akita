@@ -1,14 +1,37 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CurrencyPairsRates } from '@cart/store/cart.model';
+import { CurrencyPairsRates, Product } from '@cart/store/cart.model';
 import { CartStore } from '@cart/store/cart.store';
 import { environment } from '@env/environment';
+import { Currencies } from '@shared/helpers/app.constants';
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
-  constructor(private http: HttpClient, private cartStore: CartStore) {}
+  constructor(private http: HttpClient, private store: CartStore) {
+    this.loadSelectedCart([20, 45, 67, 1035]);
+    this.loadCurrencyPairsRates(['RUB', 'EUR', 'GBP', 'JPY']).subscribe(currencyPairsRates => {
+      this.setCurrencyPairsRates(currencyPairsRates);
+    });
+  }
+
+  setCurrencyPairsRates(currencyPairsRates: Record<CurrencyPairsRates, number>): void {
+    this.store.update({ currencyPairsRates });
+  }
+
+  setActiveCurrency(activeCurrency: Currencies): void {
+    this.store.update({ activeCurrency });
+  }
+
+  loadSelectedCart(prices: number[]): void {
+    const products = prices.map((item, index) => this.createProduct(item, index));
+    const ids = products.map(product => product.uuid);
+    const entities = products.reduce((acc, product) => {
+      return { ...acc, [product.uuid]: product };
+    }, {} as Record<number, Product>);
+    this.store.update({ entities, ids });
+  }
 
   loadCurrencyPairsRates(pairs: string[]): Observable<Record<CurrencyPairsRates, number>> {
     const data = this.getCurrencyPairsRatesFromStorage();
@@ -53,5 +76,15 @@ export class CartService {
     } else {
       return null;
     }
+  }
+
+  private createProduct(price: number, index: number): Product {
+    return {
+      price,
+      uuid: crypto.randomUUID(),
+      name: 'Product name ' + (index + 1),
+      image: 'https://picsum.photos/id/' + index * 10 + '/200/200',
+      createdAt: new Date().toISOString()
+    };
   }
 }

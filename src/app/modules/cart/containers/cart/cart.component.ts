@@ -19,13 +19,9 @@ export class CartComponent {
   activeCurrency$ = this.cartQuery.activeCurrency$;
   currencyPairsRates$ = this.cartQuery.currencyPairsRates$;
 
-  constructor(private cartService: CartService, private cartQuery: CartQuery) {
-    this.cartService.loadCurrencyPairsRates(['RUB', 'EUR', 'GBP', 'JPY']).subscribe(currencyPairsRates => {
-      this.cartQuery.currencyPairsRates$.next(currencyPairsRates);
-    });
-  }
+  constructor(private cartService: CartService, private cartQuery: CartQuery) {}
 
   setActiveCurrency(activeCurrency: Currencies): void {
-    this.cartQuery.setActiveCurrency(activeCurrency);
+    this.cartService.setActiveCurrency(activeCurrency);
   }
 }

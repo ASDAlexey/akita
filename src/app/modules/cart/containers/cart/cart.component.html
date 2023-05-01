@@ -13,8 +13,12 @@
   </div>
   <ng-container *ngIf="currencyPairsRates$ | async as currencyPairsRates">
     <div *ngIf="products$ | async as products" class="product-list">
-      <ng-container *ngFor="let product of products; trackByKey: 'uuid'; let i = index">
-        <cc-product [activeCurrency]="activeCurrency" [currencyPairsRates]="currencyPairsRates" [product]="product"></cc-product>
+      <ng-container *ngFor="let id of products.ids; trackByKey: 'uuid'; let i = index">
+        <cc-product
+          [activeCurrency]="activeCurrency"
+          [currencyPairsRates]="currencyPairsRates"
+          [product]="products.entities[id]"
+        ></cc-product>
       </ng-container>
     </div>
     <cc-total-price
