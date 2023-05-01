@@ -21,7 +21,10 @@
     "useDefineForClassFields": false,
     "lib": ["ES2022", "dom"],
     "paths": {
-      "@app/*": ["app/*"]
+      "@app/*": ["app/*"],
+      "@env/*": ["environments/*"],
+      "@shared/*": ["app/modules/shared/*"],
+      "@cart/*": ["app/modules/cart/*"]
     }
   },
   "angularCompilerOptions": {

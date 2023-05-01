@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CurrencyPairsNames } from '@app/modules/cart/services/cart.service';
-import { CartFacadeService } from '@app/modules/cart/store/cart-facade.service';
+import { CartFacadeService } from '@cart/store/cart-facade.service';
 import { Currencies } from '@shared/helpers/app.constants';
 
 @Component({
   selector: 'cc-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CartComponent {
   currencyPairsNames = CurrencyPairsNames;

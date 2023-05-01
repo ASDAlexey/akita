@@ -1,28 +1,21 @@
 import { Injectable } from '@angular/core';
-import { loadCurrencyPairsRates, loadSelectedCart, setActiveCurrency } from '@app/modules/cart/store/cart.actions';
-import { CartState } from '@app/modules/cart/store/cart.reducer';
-import {
-  selectActiveCurrency,
-  selectCurrencyPairsRates,
-  selectProducts,
-  selectTotalProductsPrice,
-} from '@app/modules/cart/store/cart.selectors';
-import { select, Store } from '@ngrx/store';
+import { CurrencyPairsRates, Product } from '@cart/services/cart.service';
 import { Currencies } from '@shared/helpers/app.constants';
+import { of } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class CartFacadeService {
-  products$ = this.store$.pipe(select(selectProducts));
-  totalProductsPrice$ = this.store$.pipe(select(selectTotalProductsPrice));
-  activeCurrency$ = this.store$.pipe(select(selectActiveCurrency));
-  currencyPairsRates$ = this.store$.pipe(select(selectCurrencyPairsRates));
+  products$ = of([] as Product[]);
+  totalProductsPrice$ = of(0);
+  activeCurrency$ = of(Currencies.USD);
+  currencyPairsRates$ = of({} as Record<CurrencyPairsRates, number>);
 
-  constructor(private store$: Store<CartState>) {
-    this.store$.dispatch(loadSelectedCart({ data: [{ price: 20 }, { price: 45 }, { price: 67 }, { price: 1035 }] }));
-    this.store$.dispatch(loadCurrencyPairsRates({ pairs: ['RUB', 'EUR', 'GBP', 'JPY'] }));
-  }
+  // constructor(private store$: Store<CartState>) {
+  //   this.store$.dispatch(loadSelectedCart({ data: [{ price: 20 }, { price: 45 }, { price: 67 }, { price: 1035 }] }));
+  //   this.store$.dispatch(loadCurrencyPairsRates({ pairs: ['RUB', 'EUR', 'GBP', 'JPY'] }));
+  // }
 
   setActiveCurrency(activeCurrency: Currencies): void {
-    this.store$.dispatch(setActiveCurrency({ activeCurrency }));
+    // this.store$.dispatch(setActiveCurrency({ activeCurrency }));
   }
 }

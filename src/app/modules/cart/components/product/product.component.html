@@ -1,11 +1,10 @@
 <div class="product">
-  <img class="product__img" [src]="product.image" alt="product-image" />
+  <img alt="product-image" class="product__img" [src]="product.image" />
   <div class="product__info">
     <span class="product__name" [innerText]="product.name"></span>
     <span class="product__price">
       {{
-        (product.price | priceInfo: currencyPairsRates)[currencyPairsNames[activeCurrency]]
-          | currency: activeCurrency:'symbol-narrow'
+        (product.price | priceInfo : currencyPairsRates)[currencyPairsNames[activeCurrency]] | currency : activeCurrency : 'symbol-narrow'
       }}
     </span>
   </div>

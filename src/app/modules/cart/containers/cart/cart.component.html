@@ -1,4 +1,4 @@
-<ng-container *ngrxLet="activeCurrency$; let activeCurrency">
+<ng-container *ngIf="activeCurrency$ | async as activeCurrency">
   <div class="languages">
     <h2 class="languages__title">Choose currency:</h2>
     <ul class="languages__list">
@@ -11,20 +11,17 @@
       </li>
     </ul>
   </div>
-  <ng-container *ngrxLet="currencyPairsRates$; let currencyPairsRates">
-    <div class="product-list">
-      <ng-container *ngFor="let product of products$ | async; trackByKey: 'uuid'; let i = index">
-        <cc-product
-          [product]="product"
-          [currencyPairsRates]="currencyPairsRates"
-          [activeCurrency]="activeCurrency"
-        ></cc-product>
+  <ng-container *ngIf="currencyPairsRates$ | async as currencyPairsRates">
+    <div *ngIf="products$ | async as products" class="product-list">
+      <ng-container *ngFor="let product of products; trackByKey: 'uuid'; let i = index">
+        <cc-product [activeCurrency]="activeCurrency" [currencyPairsRates]="currencyPairsRates" [product]="product"></cc-product>
       </ng-container>
     </div>
     <cc-total-price
-      [totalProductsPrice]="totalProductsPrice$ | ngrxPush"
-      [currencyPairsRates]="currencyPairsRates"
+      *ngIf="totalProductsPrice$ | async as totalProductsPrice"
       [activeCurrency]="activeCurrency"
+      [currencyPairsRates]="currencyPairsRates"
+      [totalProductsPrice]="totalProductsPrice"
     ></cc-total-price>
   </ng-container>
 </ng-container>

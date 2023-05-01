@@ -9,9 +9,9 @@ import { Currencies } from '@shared/helpers/app.constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TotalPriceComponent {
-  @Input() totalProductsPrice: number;
-  @Input() currencyPairsRates: Record<CurrencyPairsRates, number>;
-  @Input() activeCurrency: Currencies;
+  @Input() totalProductsPrice!: number;
+  @Input() currencyPairsRates!: Record<CurrencyPairsRates, number>;
+  @Input() activeCurrency!: Currencies;
 
   currencyPairsNames = CurrencyPairsNames;
 }
