@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CartRepository, CurrencyPairsNames } from '@cart/services/cart.repository';
-import { CartService } from '@cart/store/cart.service';
+import { CartQuery } from '@cart/store/cart.query';
 import { Currencies } from '@shared/helpers/app.constants';
 
 @Component({
@@ -18,7 +18,7 @@ export class CartComponent {
   activeCurrency$ = this.cartService.activeCurrency$;
   currencyPairsRates$ = this.cartService.currencyPairsRates$;
 
-  constructor(private cartService: CartService, private cartRepository: CartRepository) {
+  constructor(private cartService: CartQuery, private cartRepository: CartRepository) {
     this.cartRepository.loadCurrencyPairsRates(['RUB', 'EUR', 'GBP', 'JPY']).subscribe(currencyPairsRates => {
       this.cartService.currencyPairsRates$.next(currencyPairsRates);
     });

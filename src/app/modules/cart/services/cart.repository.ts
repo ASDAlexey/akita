@@ -4,14 +4,6 @@ import { environment } from '@env/environment';
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
-export interface Product {
-  uuid: string;
-  price: number;
-  name: string;
-  image: string;
-  createdAt: string;
-}
-
 export enum CurrencyPairsRates {
   USDRUB = 'USDRUB',
   USDEUR = 'USDEUR',
