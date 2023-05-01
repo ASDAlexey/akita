@@ -1,11 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CurrencyPairsRates, Product } from '@cart/services/cart.service';
+import { CurrencyPairsRates, Product } from '@cart/services/cart.repository';
+import { CartStore } from '@cart/store/cart.store';
 import { Currencies } from '@shared/helpers/app.constants';
 import { BehaviorSubject, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
-export class CartFacadeService {
+export class CartService {
   products$ = of(
     [{ price: 20 }, { price: 45 }, { price: 67 }, { price: 1035 }].map((item, index) => this.createProduct(item, index)) as Product[]
   );
@@ -13,14 +15,13 @@ export class CartFacadeService {
   activeCurrency$ = new BehaviorSubject(Currencies.USD);
   currencyPairsRates$ = new BehaviorSubject({} as Record<CurrencyPairsRates, number>);
 
-  constructor() {
+  constructor(private sessionStore: CartStore, private http: HttpClient) {
     // this.store$.dispatch(loadSelectedCart({ data: [{ price: 20 }, { price: 45 }, { price: 67 }, { price: 1035 }] }));
     // this.store$.dispatch(loadCurrencyPairsRates({ pairs: ['RUB', 'EUR', 'GBP', 'JPY'] }));
   }
 
   setActiveCurrency(activeCurrency: Currencies): void {
     // this.store$.dispatch(setActiveCurrency({ activeCurrency }));
-    console.log('activeCurrency', activeCurrency);
     this.activeCurrency$.next(activeCurrency);
   }
 

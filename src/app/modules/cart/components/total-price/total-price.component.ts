@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CurrencyPairsNames, CurrencyPairsRates } from '@app/modules/cart/services/cart.service';
+import { CurrencyPairsNames, CurrencyPairsRates } from '@cart/services/cart.repository';
 import { Currencies } from '@shared/helpers/app.constants';
 
 @Component({

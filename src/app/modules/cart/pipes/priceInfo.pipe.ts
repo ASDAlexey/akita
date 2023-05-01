@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { CurrencyPairsRates } from '@app/modules/cart/services/cart.service';
+import { CurrencyPairsRates } from '@cart/services/cart.repository';
 
 @Pipe({ name: 'priceInfo' })
 export class PriceInfoPipe implements PipeTransform {

@@ -28,7 +28,7 @@ export const CurrencyPairsNames = {
 };
 
 @Injectable({ providedIn: 'root' })
-export class CartService {
+export class CartRepository {
   constructor(private http: HttpClient) {}
 
   loadCurrencyPairsRates(pairs: string[]): Observable<Record<CurrencyPairsRates, number>> {
