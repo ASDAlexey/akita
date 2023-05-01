@@ -20,6 +20,7 @@ export class CartFacadeService {
 
   setActiveCurrency(activeCurrency: Currencies): void {
     // this.store$.dispatch(setActiveCurrency({ activeCurrency }));
+    console.log('activeCurrency', activeCurrency);
     this.activeCurrency$.next(activeCurrency);
   }
 
