@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { CurrencyPairsRates } from '@cart/services/cart.repository';
+import { CurrencyPairsRates } from '@cart/store/cart.model';
 
 @Pipe({ name: 'priceInfo' })
 export class PriceInfoPipe implements PipeTransform {
@@ -18,7 +18,7 @@ export class PriceInfoPipe implements PipeTransform {
       euros: priceInUSD * currencyPairsRates[CurrencyPairsRates.USDEUR],
       'US dollars': priceInUSD,
       pounds: priceInUSD * currencyPairsRates[CurrencyPairsRates.USDGBP],
-      yens: priceInUSD * currencyPairsRates[CurrencyPairsRates.USDJPY],
+      yens: priceInUSD * currencyPairsRates[CurrencyPairsRates.USDJPY]
     };
   }
 }

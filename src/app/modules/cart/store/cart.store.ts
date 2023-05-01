@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CurrencyPairsRates } from '@cart/services/cart.repository';
-import { Product } from '@cart/store/cart.model';
+import { CurrencyPairsRates, Product } from '@cart/store/cart.model';
 import { Store, StoreConfig } from '@datorama/akita';
 import { Status } from '@shared/constants/app.constants';
 import { Currencies } from '@shared/helpers/app.constants';

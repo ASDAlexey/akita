@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CurrencyPairsNames, CurrencyPairsRates } from '@cart/services/cart.repository';
+import { CurrencyPairsNames, CurrencyPairsRates } from '@cart/store/cart.model';
 import { Currencies } from '@shared/helpers/app.constants';
 
 @Component({
   selector: 'cc-total-price',
   templateUrl: './total-price.component.html',
   styleUrls: ['./total-price.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TotalPriceComponent {
   @Input() totalProductsPrice!: number;

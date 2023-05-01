@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { CartRepository, CurrencyPairsNames } from '@cart/services/cart.repository';
+import { CurrencyPairsNames } from '@cart/store/cart.model';
 import { CartQuery } from '@cart/store/cart.query';
+import { CartService } from '@cart/store/cart.service';
 import { Currencies } from '@shared/helpers/app.constants';
 
 @Component({
@@ -13,18 +14,18 @@ export class CartComponent {
   currencyPairsNames = CurrencyPairsNames;
   currencies = Currencies;
 
-  products$ = this.cartService.products$;
-  totalProductsPrice$ = this.cartService.totalProductsPrice$;
-  activeCurrency$ = this.cartService.activeCurrency$;
-  currencyPairsRates$ = this.cartService.currencyPairsRates$;
+  products$ = this.cartQuery.products$;
+  totalProductsPrice$ = this.cartQuery.totalProductsPrice$;
+  activeCurrency$ = this.cartQuery.activeCurrency$;
+  currencyPairsRates$ = this.cartQuery.currencyPairsRates$;
 
-  constructor(private cartService: CartQuery, private cartRepository: CartRepository) {
-    this.cartRepository.loadCurrencyPairsRates(['RUB', 'EUR', 'GBP', 'JPY']).subscribe(currencyPairsRates => {
-      this.cartService.currencyPairsRates$.next(currencyPairsRates);
+  constructor(private cartService: CartService, private cartQuery: CartQuery) {
+    this.cartService.loadCurrencyPairsRates(['RUB', 'EUR', 'GBP', 'JPY']).subscribe(currencyPairsRates => {
+      this.cartQuery.currencyPairsRates$.next(currencyPairsRates);
     });
   }
 
   setActiveCurrency(activeCurrency: Currencies): void {
-    this.cartService.setActiveCurrency(activeCurrency);
+    this.cartQuery.setActiveCurrency(activeCurrency);
   }
 }
