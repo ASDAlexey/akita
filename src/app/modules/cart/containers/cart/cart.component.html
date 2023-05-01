@@ -18,10 +18,9 @@
       </ng-container>
     </div>
     <cc-total-price
-      *ngIf="totalProductsPrice$ | async as totalProductsPrice"
       [activeCurrency]="activeCurrency"
       [currencyPairsRates]="currencyPairsRates"
-      [totalProductsPrice]="totalProductsPrice"
+      [totalProductsPrice]="(totalProductsPrice$ | async) ?? 0"
     ></cc-total-price>
   </ng-container>
 </ng-container>
